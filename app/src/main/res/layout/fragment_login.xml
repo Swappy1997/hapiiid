@@ -1,0 +1,221 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bounds_ek3_color">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp">
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+        <ImageView
+            android:id="@+id/arrow_left_"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#00FF593C"
+            android:src="@drawable/arrow___left_2" />
+
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+        <TextView
+            android:id="@+id/enter_your_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:layout_centerHorizontal="true"
+            android:text="@string/enter_your_"
+            android:textAppearance="@style/enter_your_" />
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+        <TextView
+            android:id="@+id/hello_welco"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/enter_your_"
+            android:layout_height="wrap_content"
+            android:alpha="0.7"
+            android:fontFamily="@font/montserrat_bold"
+            android:lineSpacingExtra="4sp"
+            android:text="@string/hello_welco"
+            android:textAppearance="@style/hello_welco"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:layout_below="@id/hello_welco"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="100dp"
+                android:layout_height="60dp"
+                android:background="#19FF7F5D"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/rectangleindia" />
+
+                <TextView
+                    android:id="@+id/some_id"
+                    android:layout_width="25dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:alpha="0.5"
+                    android:ellipsize="none"
+                    android:maxLines="1"
+                    android:text="@string/phonecode"
+                    android:textAppearance="@style/some_id" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="217dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="134dp"
+                android:background="#19FF7F5D">
+
+                <EditText
+                    android:id="@+id/etphoneno"
+                    android:layout_width="217dp"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:layout_centerInParent="true"
+                    android:textSize="12sp"
+                    android:hint="phonenumber" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/requestotp"
+            android:layout_width="373dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/layout1"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_13"
+            android:text="Request OTP" />
+
+        <!-- Auto layout, variables, and unit scale are not yet supported -->
+        <RelativeLayout
+            android:id="@+id/layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/requestotp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="140dp"
+                android:layout_height="1dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:alpha="0.1"
+                android:background="@drawable/line1" />
+
+            <TextView
+                android:layout_width="69dp"
+                android:layout_height="24dp"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Login with"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="140dp"
+                android:layout_height="1dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:alpha="0.1"
+                android:background="@drawable/line1" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout2"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#19FF7F5D"
+                android:gravity="center_horizontal"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/google"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/google" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:ellipsize="none"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:maxLines="1"
+                    android:text="Google"
+                    android:textAppearance="@style/some_id" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="1dp" /> <!-- Adjust the space width as needed -->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="58dp"
+                android:layout_weight="1"
+                android:background="#19FF7F5D"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/facebook" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@id/facebook"
+                    android:ellipsize="none"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:maxLines="1"
+                    android:text="Facebook"
+                    android:textAppearance="@style/some_id" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout3"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:text="@string/terms_and_conditions"
+            android:layout_marginBottom="24dp"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</ScrollView>

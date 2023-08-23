@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- splash colors -->
+
+
+    <color name="_bg__splash_ek2_color">#000000</color>
+    <color name="rectangle_2348_color">#FFFFFF</color>
+    <color name="bounds_ek3_color">#ffffff</color>
+    <color name="best_markitplac_color">#020202</color>
+
+
+    <color name="find_nearest_local_market_color">#020202</color>
+</resources>

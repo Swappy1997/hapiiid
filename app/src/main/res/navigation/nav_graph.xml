@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/login">
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.hapid.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_otp"
+            app:destination="@id/otp" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFirst"
+        android:name="com.example.hapid.SplashFirst"
+        android:label="fragment_splash_first"
+        tools:layout="@layout/fragment_splash_first" >
+        <action
+            android:id="@+id/action_splashFirst_to_splashTwo"
+            app:destination="@id/splashTwo" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashTwo"
+        android:name="com.example.hapid.SplashTwo"
+        android:label="fragment_splash_two"
+        tools:layout="@layout/fragment_splash_two" >
+        <action
+            android:id="@+id/action_splashTwo_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.example.hapid.Otp"
+        android:label="fragment_otp"
+        tools:layout="@layout/fragment_otp" >
+        <action
+            android:id="@+id/action_otp_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.hapid.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

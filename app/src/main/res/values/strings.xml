@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Hapid</string>
+    <!-- splash strings -->
+
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="_12_22_string">12:22</string>
+    <string name="find_nearest_local_market_string">Find Nearest Local Market</string>
+
+    <string name="enter_your_">
+Enter your mobile number
+</string>
+    <string name="sunrise_string">Sunrise</string>
+    <string name="hello_welco">
+Hello, Welcome Back to Our Account
+</string>
+    <string name="best_markitplac_string"> Best Markitplac</string>
+    <string name="o_on_time_departures__pay_just_for_your_seat__no_refusal_from_our_end__spacious___comfortable_seating__female_passengers_safety_standards__onboard_refreshments__cab_tracking_through_maps_string">O On-Time Departures. Pay just for your seat. No Refusal from our end. Spacious &amp; Comfortable Seating. Female passengers safety standards. Onboard Refreshments. Cab Tracking through Maps</string>
+    <string name="get_started_string">Get Started</string>
+    <string name="phonecode">+91</string>
+    <string name="terms_and_conditions">
+    By creating passcode you agree with our
+    <font color="#FF7F5D"><a href="terms_link">Terms &amp; Conditions</a></font>
+    and
+    <font color="#FF7F5D"><a href="privacy_link">Privacy Policy</a></font>.
+</string>
+    <string name="didntrecive">
+        don\'t receive OTP? <font color="#FF7F5D"><a href="terms_link">Resend</a></font>
+
+    </string>
+    <string name="verification_msg_">
+Enter your Verification code
+</string>
+    <string name="we_have_sen">
+We Have sent the code verification to your mobile number
+</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
