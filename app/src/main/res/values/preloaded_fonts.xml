@@ -4,6 +4,7 @@
         <item>@font/inter_extrabold</item>
         <item>@font/inter_medium</item>
         <item>@font/montserrat_bold</item>
+        <item>@font/montserrat_medium</item>
         <item>@font/montserrat_thin</item>
     </array>
 </resources>

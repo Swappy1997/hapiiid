@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_login_to_otp"
-            app:destination="@id/otp" />
+            app:destination="@id/otp"
+            app:popUpTo="@id/login"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/splashFirst"
@@ -39,7 +41,10 @@
         tools:layout="@layout/fragment_otp" >
         <action
             android:id="@+id/action_otp_to_profile"
-            app:destination="@id/profile" />
+            app:destination="@id/profile"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/otp"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/profile"

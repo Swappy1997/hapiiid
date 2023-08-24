@@ -1,59 +1,102 @@
 package com.example.hapid
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.media3.effect.Crop
+import com.bumptech.glide.Glide
+import com.example.hapid.databinding.FragmentProfileBinding
+import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Profile.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Profile : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private val locationViewModel: LocationViewModel by viewModels()
+    private val contract = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        binding.profilepic.setImageURI(it)
     }
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+
+        binding.currentlocation.setOnClickListener {
+            Log.d("button", "onCreateView: " + "button click")
+            onPickLocationClick()
+        }
+        locationViewModel.locationLiveData.observe(viewLifecycleOwner) { location ->
+            updateCityName(location)
+        }
+        locationViewModel.locationLiveData.observe(viewLifecycleOwner) { location ->
+            // Handle the retrieved location
+            val latitude = location.latitude
+            val longitude = location.longitude
+        }
+        binding.layout1.setOnClickListener {
+            contract.launch("image/*")
+        }
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Profile.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Profile().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun onPickLocationClick() {
+        val context = requireContext()
+
+        if (ContextCompat.checkSelfPermission(
+                context,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
+        } else {
+            locationViewModel.fetchCurrentLocation()
+        }
     }
+
+    private fun updateCityName(location: Location) {
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+        val addresses: MutableList<Address>? = geocoder.getFromLocation(
+            location.latitude,
+            location.longitude,
+            1
+        )
+
+        if (addresses != null) {
+            if (addresses.isNotEmpty()) {
+                val cityName = addresses[0].locality
+                binding.currentlocation.text = cityName
+            }
+        }
+    }
+
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 123
+
+    }
+
 }

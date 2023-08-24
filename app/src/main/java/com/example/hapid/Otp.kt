@@ -11,9 +11,11 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.hapid.databinding.FragmentOtpBinding
 import androidx.lifecycle.observe
+import kotlinx.coroutines.launch
 
 
 class Otp : Fragment() {
@@ -27,13 +29,19 @@ class Otp : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentOtpBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
+        _binding.mobile.text = GeneratedOtpSingleton.mobileno
+        return _binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setEditTextListeners()
         verifyOtp()
+    }
 
-
-        _binding.mobile.text = GeneratedOtpSingleton.mobileno
-
-        return _binding.root
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 
     private fun setEditTextListeners() {
@@ -88,30 +96,21 @@ class Otp : Fragment() {
 
             val combinedText = enteredText1 + enteredText2 + enteredText3 + enteredText4
             viewModel.setEnteredOtp(combinedText)
+
             val isOtpVerified = viewModel.verifyOtp()
-
-            Log.d(
-                "OTP",
-                "verifyOtp:" + viewModel.verifyOtp.value + "" + viewModel.enteredOtp.value
-            )
-
-            viewModel.verifyOtp.observe(viewLifecycleOwner) { isOtpVerified ->
-                if (isOtpVerified) {
+            if (isOtpVerified) {
+                viewModel.resetOtpVerification()
+                viewLifecycleOwner.lifecycleScope.launch {
                     findNavController().navigate(R.id.action_otp_to_profile)
-                } else {
-                    // OTP verification failed, show error message
-                    showToast("error")
                 }
+            } else {
+                showToast("Otp is incorrect, please try again!!")
             }
-
         }
-
-
     }
 
     private fun showToast(message: String) {
-
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
 }

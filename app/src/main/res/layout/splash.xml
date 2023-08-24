@@ -54,7 +54,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="87dp"
                 android:layout_marginTop="471dp"
-                android:fontFamily="@font/inter_extrabold"
                 android:text="@string/best_markitplac_string"
                 android:textColor="@color/best_markitplac_color"
                 android:textSize="24sp"

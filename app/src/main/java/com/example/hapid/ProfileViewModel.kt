@@ -16,16 +16,15 @@ class ProfileViewModel : ViewModel() {
     private val _generatedOtp = MutableLiveData<String>()
     val generatedOtp: LiveData<String> = _generatedOtp
 
-    private val _enteredOtp = MutableLiveData<String>()
-    var enteredOtp: LiveData<String> = _enteredOtp
+    private val _enteredOtp = MutableLiveData<String?>()
+    val enteredOtp: LiveData<String?> = _enteredOtp
 
-    private val _verifyOtp = MutableLiveData<Boolean>()
-    val verifyOtp: LiveData<Boolean>
-        get() = _verifyOtp
-
+    private val _verifyOtp = MutableLiveData<Boolean?>()
+    val verifyOtp: LiveData<Boolean?> = _verifyOtp
     fun setMobileNumber(number: String) {
         _mobileNumber.value = number
         GeneratedOtpSingleton.mobileno = number
+
 
     }
 
@@ -52,6 +51,10 @@ class ProfileViewModel : ViewModel() {
         val result = generated != null && entered != null && generated == entered
         _verifyOtp.value = result
         return result
+    }
+    fun resetOtpVerification() {
+        _enteredOtp.value = null // Reset entered OTP
+        _verifyOtp.value = null // Reset verification result
     }
 
 }
