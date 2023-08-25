@@ -12,9 +12,8 @@
         <!-- Auto layout, variables, and unit scale are not yet supported -->
         <ImageView
             android:id="@+id/arrow_left_"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="59dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="#00FF593C"
             android:clipToOutline="true"
             android:src="@drawable/arrow___left_2" />
@@ -25,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="163.94dp"
+            android:layout_marginTop="100dp"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="top"
             android:text="@string/verification_msg_"
@@ -35,11 +34,9 @@
             android:id="@+id/hello_welco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="259.44dp"
+            android:layout_below="@id/enter_your_"
             android:alpha="0.7"
             android:fontFamily="@font/montserrat_bold"
-            android:gravity="top"
             android:lineSpacingExtra="4sp"
             android:text="@string/we_have_sen"
             android:textAppearance="@style/hello_welco"
@@ -50,13 +47,14 @@
             android:id="@+id/layout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="373dp">
+            android:layout_below="@id/hello_welco"
+            android:layout_marginTop="68dp">
 
             <TextView
+                android:id="@+id/mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="8dp"
-                android:id="@+id/mobile"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="+917720840636"
                 app:drawableEndCompat="@drawable/baseline_edit_24" />
@@ -126,12 +124,13 @@
             android:layout_height="60dp"
             android:layout_below="@id/layout1"
             android:layout_marginTop="40dp"
-            android:text="Submit"
             android:background="@drawable/rectangle_background"
+            android:text="Submit"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/resend"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/submit"

@@ -1,18 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="50dp"
     android:gravity="center"
+    android:padding="8dp"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="16dp"
         android:text="Your confirmation code is below — enter it and we'll help you get signed in." />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/pinDigit1"
@@ -30,7 +32,7 @@
             android:id="@+id/pinDigit2"
             android:layout_width="74dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:background="#19FF7F5D"
             android:gravity="center"
             android:inputType="number"
@@ -42,7 +44,7 @@
             android:id="@+id/pinDigit3"
             android:layout_width="74dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:background="#19FF7F5D"
             android:gravity="center"
             android:inputType="number"

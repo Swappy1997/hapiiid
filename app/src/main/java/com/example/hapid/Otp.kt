@@ -10,11 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.hapid.databinding.FragmentOtpBinding
 import androidx.lifecycle.observe
+import com.example.hapid.databinding.DialogCustomOtpBinding
 import kotlinx.coroutines.launch
 
 
@@ -37,6 +39,7 @@ class Otp : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setEditTextListeners()
         verifyOtp()
+        requestOtp()
     }
 
     override fun onDestroy() {
@@ -113,4 +116,43 @@ class Otp : Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
+    fun requestOtp() {
+        _binding.resend.setOnClickListener {
+            val mobileNumber = GeneratedOtpSingleton.mobileno
+
+            if (mobileNumber != null) {
+                viewModel.setMobileNumber(mobileNumber)
+            }
+            viewModel.generateOtp()
+        }
+        viewModel.generatedOtp.observe(viewLifecycleOwner) { otp ->
+            if (otp != null) {
+                // OTP is generated, show the dialog
+                showOtpMessageDialog(otp)
+            }
+        }
+    }
+
+
+    fun showOtpMessageDialog(otp: String) {
+        val otpMessageDialogBinding = DialogCustomOtpBinding.inflate(layoutInflater)
+        // otpMessageDialogBinding.tvGeneratedOtp.text = viewModel.generatedOtp.value
+
+        val dialog = context?.let {
+            AlertDialog.Builder(it)
+                .setView(otpMessageDialogBinding.root)
+                .setPositiveButton("OK") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setCancelable(false)
+                .create()
+        }
+        dialog?.show()
+        if (otp.length >= 4) {
+            otpMessageDialogBinding.pinDigit1.text = otp.substring(0, 1)
+            otpMessageDialogBinding.pinDigit2.text = otp.substring(1, 2)
+            otpMessageDialogBinding.pinDigit3.text = otp.substring(2, 3)
+            otpMessageDialogBinding.pinDigit4.text = otp.substring(3, 4)
+        }
+    }
 }

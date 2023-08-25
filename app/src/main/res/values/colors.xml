@@ -14,4 +14,9 @@
 
     <color name="find_nearest_local_market_color">#020202</color>
     <color name="buttoncolor">#5046BB</color>
+    <color name="colorPrimary">#FF7F5D</color>
+    <color name="colorPrimaryDark">#FF7F5D</color>
+    <color name="colorAccent">#5046BB</color>
+    <!-- Other night mode colors -->
 </resources>
+
